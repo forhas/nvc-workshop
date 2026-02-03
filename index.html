@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="קורס יסודות בתקשורת מקרבת - 8 מפגשים עם שרון כרמל, פרדס חנה. מרץ-אפריל 2026">
+    <meta name="theme-color" content="#3D5A5C">
+    <title>קורס יסודות בתקשורת מקרבת | שרון כרמל</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="images/hero-bg.jpg" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="images/hero-bg-sm.jpg" media="(max-width: 767px)">
+    <style>
+        /* ============================
+           CSS Custom Properties
+           ============================ */
+        :root {
+            --color-cream: #FFF8F0;
+            --color-beige-light: #F5E6D3;
+            --color-beige: #E8D5C4;
+            --color-peach-light: #F4C2B8;
+            --color-peach: #E8B4A8;
+            --color-teal: #3D5A5C;
+            --color-teal-dark: #2C4A4C;
+            --color-teal-light: #4A7275;
+            --color-white: #FFFFFF;
+
+            --font-family: 'Rubik', 'Arial Hebrew', 'Segoe UI', sans-serif;
+
+            --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            --fs-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+            --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+            --fs-lg: clamp(1.125rem, 1rem + 0.6vw, 1.35rem);
+            --fs-xl: clamp(1.35rem, 1.1rem + 1.2vw, 1.75rem);
+            --fs-2xl: clamp(1.75rem, 1.4rem + 1.8vw, 2.5rem);
+            --fs-3xl: clamp(2.2rem, 1.7rem + 2.5vw, 3.5rem);
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            --container-max: 1100px;
+            --container-padding: clamp(1.25rem, 4vw, 3rem);
+
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-pill: 50px;
+
+            --shadow-sm: 0 2px 8px rgba(44, 74, 76, 0.06);
+            --shadow-md: 0 4px 20px rgba(44, 74, 76, 0.08);
+            --shadow-lg: 0 8px 40px rgba(44, 74, 76, 0.12);
+
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.6s ease-out;
+        }
+
+        /* ============================
+           Reset & Base
+           ============================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--fs-base);
+            line-height: 1.8;
+            color: var(--color-teal-dark);
+            background-color: var(--color-cream);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.3;
+            font-weight: 600;
+            color: var(--color-teal-dark);
+        }
+
+        /* ============================
+           Accessibility
+           ============================ */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            right: var(--space-sm);
+            background: var(--color-teal-dark);
+            color: var(--color-cream);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            z-index: 1000;
+            transition: top var(--transition-fast);
+            font-size: var(--fs-sm);
+        }
+
+        .skip-link:focus {
+            top: var(--space-sm);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--color-teal);
+            outline-offset: 3px;
+        }
+
+        /* ============================
+           Layout
+           ============================ */
+        .container {
+            max-width: var(--container-max);
+            margin-inline: auto;
+            padding-inline: var(--container-padding);
+        }
+
+        .section {
+            padding-block: var(--space-3xl);
+            position: relative;
+        }
+
+        .section__heading {
+            font-size: var(--fs-2xl);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .section__heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--color-peach);
+            margin: var(--space-sm) auto 0;
+            border-radius: 2px;
+        }
+
+        /* ============================
+           Buttons
+           ============================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-family);
+            font-size: var(--fs-base);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+            min-height: 48px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Touch-specific active states */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:active {
+                transform: scale(0.97);
+                transition-duration: 0.1s;
+            }
+
+            .btn--primary:active {
+                background: var(--color-teal-dark);
+            }
+
+            .btn--whatsapp:active {
+                background: #1da851;
+            }
+
+            .carousel__btn:active {
+                background: var(--color-teal);
+                color: var(--color-cream);
+                transform: scale(0.93);
+            }
+
+            .carousel__dot:active {
+                transform: scale(1.3);
+            }
+
+            .detail-card:active {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+
+            .whatsapp-fab:active {
+                transform: scale(0.93);
+                animation: none;
+            }
+        }
+
+        .btn--primary {
+            background: var(--color-teal);
+            color: var(--color-cream);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-teal-dark);
+        }
+
+        .btn--whatsapp {
+            background: #25D366;
+            color: var(--color-white);
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            padding: var(--space-md) var(--space-xl);
+        }
+
+        .btn--whatsapp:hover {
+            background: #20bd5a;
+        }
+
+        .btn--whatsapp svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* ============================
+           Scroll Animations
+           ============================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+        }
+
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-child.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================
+           HERO SECTION
+           ============================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                linear-gradient(135deg,
+                    rgba(245,230,211,0.88) 0%, rgba(255,248,240,0.82) 35%,
+                    rgba(244,194,184,0.85) 65%, rgba(232,213,196,0.88) 100%),
+                url('images/hero-bg.jpg') center center / cover no-repeat;
+            background-color: var(--color-beige-light);
+            position: relative;
+            overflow: hidden;
+            padding: var(--space-2xl) var(--container-padding);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 750px;
+        }
+
+        .hero__title {
+            font-size: var(--fs-3xl);
+            font-weight: 700;
+            color: var(--color-teal-dark);
+            margin-bottom: var(--space-md);
+            animation: hero-fade-in 1s ease-out both;
+        }
+
+        .hero__subtitle {
+            font-size: var(--fs-xl);
+            font-weight: 400;
+            color: var(--color-teal-dark);
+            margin-bottom: var(--space-xs);
+            animation: hero-fade-in 1s ease-out 0.2s both;
+        }
+
+        .hero__dates {
+            font-size: var(--fs-lg);
+            font-weight: 400;
+            color: var(--color-teal);
+            margin-bottom: var(--space-xl);
+            animation: hero-fade-in 1s ease-out 0.4s both;
+        }
+
+        .hero__cta {
+            animation: hero-fade-in 1s ease-out 0.6s both;
+        }
+
+        @keyframes hero-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Text readability on photo backgrounds */
+        .hero__title,
+        .hero__subtitle,
+        .hero__dates {
+            text-shadow: 0 1px 3px rgba(255,248,240,0.5);
+        }
+
+        .quote__text {
+            text-shadow: 0 1px 4px rgba(44,74,76,0.3);
+        }
+
+        .cta__title,
+        .cta__subtitle {
+            text-shadow: 0 1px 4px rgba(255,248,240,0.8);
+        }
+
+        /* Decorative divider */
+        .hero__scroll-hint {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            animation: hero-fade-in 1s ease-out 1s both;
+        }
+
+        .hero__scroll-hint span {
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-teal), transparent);
+            margin: 0 auto;
+            animation: scroll-hint 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-hint {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 0.7; transform: scaleY(1); }
+        }
+
+        /* ============================
+           WHAT IS NVC SECTION
+           ============================ */
+        .section--nvc {
+            background: var(--color-cream);
+        }
+
+        .nvc__text {
+            max-width: 800px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .nvc__text p {
+            margin-bottom: var(--space-md);
+            font-size: var(--fs-lg);
+            line-height: 2;
+        }
+
+        .nvc__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .nvc__definition {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--color-beige-light);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .nvc__definition p {
+            font-size: var(--fs-base);
+            line-height: 1.9;
+        }
+
+        /* ============================
+           QUOTE SECTION
+           ============================ */
+        .section--quote {
+            background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal) 100%);
+            color: var(--color-cream);
+            text-align: center;
+            padding-block: var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--quote.has-bg-loaded {
+            background:
+                linear-gradient(135deg, rgba(44,74,76,0.82) 0%, rgba(61,90,92,0.78) 100%),
+                url('images/quote-bg.jpg') center 30% / cover no-repeat;
+            background-color: var(--color-teal-dark);
+        }
+
+        .section--quote::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            background: rgba(255, 255, 255, 0.03);
+            top: -80px;
+            right: -60px;
+            pointer-events: none;
+        }
+
+        .section--quote::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+            background: rgba(255, 255, 255, 0.03);
+            bottom: -50px;
+            left: -40px;
+            pointer-events: none;
+        }
+
+        .quote__text {
+            max-width: 750px;
+            margin-inline: auto;
+            font-size: var(--fs-xl);
+            font-weight: 300;
+            line-height: 2;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote__text::before {
+            content: '\201D';
+            display: block;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--color-peach-light);
+            opacity: 0.5;
+            margin-bottom: var(--space-sm);
+            font-family: serif;
+        }
+
+        /* ============================
+           COURSE CONTENT SECTION
+           ============================ */
+        .section--content {
+            background: var(--color-beige-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative blob */
+        .section--content::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: var(--color-peach-light);
+            opacity: 0.12;
+            top: -100px;
+            left: -100px;
+            pointer-events: none;
+        }
+
+        .course-list {
+            list-style: none;
+            max-width: 750px;
+            margin-inline: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-list__item {
+            padding-inline-start: var(--space-xl);
+            position: relative;
+            margin-bottom: var(--space-md);
+            font-size: var(--fs-lg);
+            line-height: 1.8;
+        }
+
+        .course-list__item::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0.55em;
+            width: 12px;
+            height: 12px;
+            background: var(--color-peach);
+            border-radius: 50% 50% 50% 5%;
+            transform: rotate(45deg);
+            transition: background-color var(--transition-base);
+        }
+
+        .course-list__item:hover::before {
+            background: var(--color-teal);
+        }
+
+        /* ============================
+           TESTIMONIALS SECTION
+           ============================ */
+        .section--testimonials {
+            background: var(--color-cream);
+        }
+
+        .testimonials__carousel {
+            position: relative;
+            max-width: 800px;
+            margin-inline: auto;
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .testimonials__track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            background: var(--color-beige-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl) var(--space-lg) var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            border: none;
+            margin: 0;
+            flex: 0 0 100%;
+            min-width: 0;
+        }
+
+        .testimonial-card::before {
+            content: '\201F';
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-md);
+            font-size: 4rem;
+            color: var(--color-teal-light);
+            line-height: 1;
+            font-family: serif;
+            opacity: 0.4;
+        }
+
+        .testimonial-card__text {
+            font-size: var(--fs-base);
+            line-height: 1.9;
+            color: var(--color-teal-dark);
+            text-align: center;
+        }
+
+        .carousel__nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .carousel__btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-beige-light);
+            color: var(--color-teal);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .carousel__btn:hover {
+            background: var(--color-teal);
+            color: var(--color-cream);
+        }
+
+        .carousel__dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .carousel__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-beige);
+            cursor: pointer;
+            padding: 0;
+            transition: background-color var(--transition-fast), width var(--transition-fast);
+        }
+
+        .carousel__dot.is-active {
+            background: var(--color-teal);
+            width: 24px;
+            border-radius: 5px;
+        }
+
+        /* ============================
+           ABOUT SECTION
+           ============================ */
+        .section--about {
+            background: var(--color-beige-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--about::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+            background: var(--color-peach-light);
+            opacity: 0.1;
+            bottom: -80px;
+            right: -60px;
+            pointer-events: none;
+        }
+
+        .about__grid {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: var(--space-xl);
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about__image-wrapper {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--color-peach-light);
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 1 / 1;
+        }
+
+        .about__image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about__bio h3 {
+            font-size: var(--fs-xl);
+            margin-bottom: var(--space-xs);
+            color: var(--color-teal-dark);
+        }
+
+        .about__bio .about__role {
+            font-size: var(--fs-lg);
+            color: var(--color-teal-light);
+            margin-bottom: var(--space-md);
+            font-weight: 300;
+        }
+
+        .about__bio p {
+            margin-bottom: var(--space-sm);
+            line-height: 1.9;
+        }
+
+        /* ============================
+           COURSE DETAILS SECTION
+           ============================ */
+        .section--details {
+            background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-beige-light) 100%);
+            text-align: center;
+        }
+
+        .details__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .detail-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            box-shadow: -3px 4px 12px rgba(44, 74, 76, 0.12);
+            border-bottom: 3px solid var(--color-peach);
+            text-align: center;
+            transition: box-shadow var(--transition-base), transform var(--transition-base);
+        }
+
+        .detail-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .detail-card--full {
+            grid-column: 1 / -1;
+            background: var(--color-cream);
+            border-bottom-color: var(--color-peach-light);
+        }
+
+        .detail-card__header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-xs);
+        }
+
+        .detail-card__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .detail-card__icon--teal {
+            background: rgba(74, 114, 117, 0.12);
+        }
+
+        .detail-card__icon--peach {
+            background: rgba(244, 194, 184, 0.35);
+        }
+
+        .detail-card__title {
+            font-size: var(--fs-xl);
+            font-weight: 600;
+            color: var(--color-teal-dark);
+            margin-bottom: 0;
+        }
+
+        .detail-card__info {
+            font-size: var(--fs-base);
+            color: var(--color-teal);
+            line-height: 1.8;
+        }
+
+        .detail-card__dates {
+            margin-top: var(--space-sm);
+            font-size: var(--fs-sm);
+            color: var(--color-teal-light);
+        }
+
+        .detail-card__price {
+            font-size: var(--fs-2xl);
+            font-weight: 700;
+            color: var(--color-teal-dark);
+        }
+
+        /* ============================
+           CTA SECTION
+           ============================ */
+        .section--cta {
+            background: linear-gradient(135deg, var(--color-peach-light) 0%, var(--color-peach) 50%, var(--color-beige) 100%);
+            text-align: center;
+            padding-block: var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--cta.has-bg-loaded {
+            background:
+                linear-gradient(135deg,
+                    rgba(244,194,184,0.72) 0%, rgba(232,180,168,0.68) 50%,
+                    rgba(232,213,196,0.72) 100%),
+                url('images/cta-bg.jpg') center 30% / cover no-repeat;
+            background-color: var(--color-peach-light);
+        }
+
+        .section--cta::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+            background: rgba(255, 255, 255, 0.15);
+            top: -150px;
+            left: -100px;
+            pointer-events: none;
+        }
+
+        .cta__title {
+            font-size: var(--fs-2xl);
+            color: var(--color-teal-dark);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta__subtitle {
+            font-size: var(--fs-xl);
+            font-weight: 500;
+            color: var(--color-teal-dark);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta__button-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn--register {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            padding: var(--space-md) var(--space-xl);
+        }
+
+        /* ============================
+           FLOATING WHATSAPP FAB
+           ============================ */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: var(--space-lg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            animation: fab-pulse 2.5s ease-in-out infinite;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+            animation: none;
+        }
+
+        .whatsapp-fab svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @keyframes fab-pulse {
+            0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35); }
+            50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.55); }
+        }
+
+        /* ============================
+           FOOTER
+           ============================ */
+        .footer {
+            background: var(--color-teal-dark);
+            color: var(--color-beige-light);
+            text-align: center;
+            padding: var(--space-lg);
+            font-size: var(--fs-sm);
+        }
+
+        .footer a {
+            color: var(--color-peach-light);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer a:hover {
+            color: var(--color-cream);
+        }
+
+        /* ============================
+           Safe Area Insets (notched devices)
+           ============================ */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            body {
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+
+            .footer {
+                padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom));
+            }
+
+            .whatsapp-fab {
+                bottom: calc(var(--space-lg) + env(safe-area-inset-bottom));
+                left: calc(var(--space-lg) + env(safe-area-inset-left));
+            }
+        }
+
+        /* ============================
+           RESPONSIVE DESIGN
+           ============================ */
+
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 85vh;
+                padding: var(--space-xl) var(--container-padding);
+                background:
+                    linear-gradient(135deg,
+                        rgba(245,230,211,0.92) 0%, rgba(255,248,240,0.88) 35%,
+                        rgba(244,194,184,0.90) 65%, rgba(232,213,196,0.92) 100%),
+                    url('images/hero-bg-sm.jpg') center center / cover no-repeat;
+                background-color: var(--color-beige-light);
+            }
+
+            .section--quote.has-bg-loaded {
+                background:
+                    linear-gradient(135deg, rgba(44,74,76,0.88) 0%, rgba(61,90,92,0.85) 100%),
+                    url('images/quote-bg-sm.jpg') center 30% / cover no-repeat;
+                background-color: var(--color-teal-dark);
+            }
+
+            .section--cta.has-bg-loaded {
+                background:
+                    linear-gradient(135deg,
+                        rgba(244,194,184,0.78) 0%, rgba(232,180,168,0.75) 50%,
+                        rgba(232,213,196,0.78) 100%),
+                    url('images/cta-bg-sm.jpg') center 30% / cover no-repeat;
+                background-color: var(--color-peach-light);
+            }
+
+            .section--content::before {
+                display: none;
+            }
+
+            .section--about::after {
+                display: none;
+            }
+
+            .section {
+                padding-block: var(--space-2xl);
+            }
+
+            .about__grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .about__image-wrapper {
+                max-width: 220px;
+                margin-inline: auto;
+            }
+
+            .hero__scroll-hint {
+                display: none;
+            }
+
+            .whatsapp-fab {
+                width: 52px;
+                height: 52px;
+                bottom: var(--space-sm);
+                left: var(--space-sm);
+            }
+
+            .whatsapp-fab svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .details__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-card--full {
+                max-width: none;
+            }
+
+            .course-list__item {
+                padding-inline-start: var(--space-lg);
+            }
+
+            .testimonial-card {
+                padding: var(--space-lg) var(--space-md) var(--space-md);
+            }
+
+            .testimonial-card::before {
+                top: var(--space-xs);
+                right: var(--space-sm);
+                font-size: 3rem;
+            }
+
+            .carousel__dot {
+                width: 14px;
+                height: 14px;
+            }
+
+            .carousel__dot.is-active {
+                width: 28px;
+            }
+
+            .carousel__dots {
+                gap: 12px;
+            }
+
+            @supports (padding-bottom: env(safe-area-inset-bottom)) {
+                .whatsapp-fab {
+                    bottom: calc(var(--space-sm) + env(safe-area-inset-bottom));
+                    left: calc(var(--space-sm) + env(safe-area-inset-left));
+                }
+            }
+        }
+
+        /* Landscape phones */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding-block: var(--space-xl);
+            }
+
+            .section {
+                padding-block: var(--space-xl);
+            }
+
+            .whatsapp-fab {
+                bottom: var(--space-xs);
+                left: var(--space-xs);
+                width: 48px;
+                height: 48px;
+            }
+
+            .whatsapp-fab svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .section {
+                padding-block: 4.5rem;
+            }
+
+            .section--quote {
+                padding-block: 4.5rem;
+            }
+
+            .section--cta {
+                padding-block: 4.5rem;
+            }
+
+            .about__grid {
+                grid-template-columns: 200px 1fr;
+                gap: var(--space-lg);
+            }
+
+            .section--content::before {
+                width: 250px;
+                height: 250px;
+                top: -70px;
+                left: -70px;
+            }
+
+            .section--about::after {
+                width: 180px;
+                height: 180px;
+                bottom: -60px;
+                right: -40px;
+            }
+
+            .section--cta::before {
+                width: 300px;
+                height: 300px;
+                top: -120px;
+                left: -80px;
+            }
+        }
+
+        /* ============================
+           Reduced Motion
+           ============================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .fade-up,
+            .stagger-child {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- ========================
+         HERO SECTION
+         ======================== -->
+    <header id="hero" class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">קורס יסודות בתקשורת מקרבת</h1>
+            <p class="hero__subtitle">8 מפגשים, ימי שני בבוקר 09:00-12:30, פרדס חנה</p>
+            <p class="hero__dates">מרץ-אפריל 2026</p>
+            <a href="#course-content" class="btn btn--primary hero__cta">מה נלמד בקורס?</a>
+        </div>
+
+        <div class="hero__scroll-hint" aria-hidden="true">
+            <span></span>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ========================
+             WHAT IS NVC SECTION
+             ======================== -->
+        <section id="about-nvc" class="section section--nvc" aria-labelledby="nvc-heading">
+            <div class="container">
+                <h2 id="nvc-heading" class="section__heading fade-up">מהי תקשורת מקרבת?</h2>
+
+                <div class="nvc__text fade-up">
+                    <p>תקשורת מקרבת היא שפה, צורת חשיבה, מרחב תרגול תיאורטי-יישומי בו אנו נזכרים איך לבסס מערכות יחסים על אמון, רצון טוב, ושיתוף פעולה.</p>
+                    <p>זוהי גישה המשמשת להעמקת החיבור לעצמנו ולאחרים. ומסייעת בהתמודדות עם קונפליקטים, אי-הבנות וסכסוכים דרך ביטוי אותנטי והקשבה לצרכים של המעורבים.</p>
+                    <p>תוכן הקורס הוא תרגול אבני הבסיס בשפת התקשורת המקרבת. במפגשים ניצור מרחב העמקה וחקירה של התיאוריה והכלים של שפה זו, ונתאמן ביישום באמצעות תרגילים ומרחב לשיתוף.</p>
+                </div>
+
+                <div class="nvc__definition fade-up">
+                    <p>התקשורת המקרבת (באנגלית <span dir="ltr">Non-Violent Communication</span> או בקיצור <span dir="ltr">NVC</span>) פותחה בשנות השישים על ידי מארשל רוזנברג. זוהי שפה המאפשרת לנו להיות בהבנה אמפתית לעצמי ולאחרים. דרך תקשורת שמסייעת להתחבר אל הרגשות והצרכים המתגלים בי ובאחר תוך כדי השיחה, ובכך מסייעת להכיר ולראות אחד את השני באמת ולעומק.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             QUOTE SECTION
+             ======================== -->
+        <section id="quote" class="section section--quote" aria-label="ציטוט">
+            <div class="container">
+                <blockquote class="quote__text fade-up">
+                    מעבר לדפוסים האוטומטיים, התגובתיים, השופטים שלנו,<br>
+                    מעבר לתפיסות של נכון או לא נכון, טוב ורע,<br>
+                    ניתן לראות מחדש את העולם כמקום שבו כולם מנסים לענות על הצרכים שלהם
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ========================
+             COURSE CONTENT SECTION
+             ======================== -->
+        <section id="course-content" class="section section--content" aria-labelledby="content-heading">
+            <div class="container">
+                <h2 id="content-heading" class="section__heading fade-up">מה נלמד בקורס?</h2>
+
+                <ul class="course-list stagger-parent">
+                    <li class="course-list__item stagger-child">נכיר את המודל של תקשורת מקרבת ואת הנחות המוצא שלו</li>
+                    <li class="course-list__item stagger-child">נבחן את ההבדל בין תצפית לפרשנות ונכיר חסמי תקשורת נפוצים</li>
+                    <li class="course-list__item stagger-child">נגלה מה הדפוסים המשותפים לכולנו, המנועים מאיתנו לקיים תקשורת מקרבת בחיינו</li>
+                    <li class="course-list__item stagger-child">נתבונן בקונפליקטים בתור פוטנציאל להעמיק חיבור</li>
+                    <li class="course-list__item stagger-child">נזהה רגשות וצרכים ונלמד לבטא אותם בצורה ברורה</li>
+                    <li class="course-list__item stagger-child">נראה איך מבקשים בצורה שמגדילה את הסיכוי שמה שחשוב לנו יענה</li>
+                    <li class="course-list__item stagger-child">נלמד כיצד לשמוע ״לא״, לומר ״לא״ ולהמשיך את הדיאלוג אחריהם</li>
+                    <li class="course-list__item stagger-child">ניווכח בכוחה של האמפתיה לשנות מצבים</li>
+                    <li class="course-list__item stagger-child">נכיר דרכים לחפש פתרונות שעובדים לכולם</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========================
+             TESTIMONIALS SECTION
+             ======================== -->
+        <section id="testimonials" class="section section--testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading" class="section__heading fade-up">מה אומרים משתתפי הקורסים?</h2>
+
+                <div class="testimonials__carousel fade-up">
+                    <div class="testimonials__track" id="testimonials-track">
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">הקורס סייע לי מאוד בהבנה של עצמי מול אחרים מול סיטואציות קשות שבהן אין לי שליטה לא על האחר ולא על הרגשות שלי. היום אני יותר מבין מה אני צריך ולא שופט את עצמי על הצרכים שלי זה הדבר הכי חשוב שלקחתי. קבלה עצמית. הנושא של לראות את הצרכים של האחר ממש בתודעה שלי ואם הוא לא נמצא בשלוף, אני אנסה לנתח ולזהות. זה משמעותי מאוד זה מסיר ממני המון מתח ומשפר את התקשורת שלי עם התלמידים וגם עם מבוגרים שאני מטפל בהם.</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">הקורס הוא חוויית גילוי. הרגשתי כמו נערה. לקחתי איתי את כל התכנים והתחלתי בגדול לתרגל אותם מעשית עם הצוות שלי, הסובבים אותי, חבר מהקורס. המון המון נכנס ליומן שלי היומי שאני רושמת בו תובנות. המפגש איתך סייע לי לחלום את החיים קצת שונים ונתן לי יותר כלים להביא את זה.</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">ואי, למדתי ממש מהכל!! מהטקסטים המדויקים והמרתקים ששלחת, מהתרגילים שהגעתי איתם לתובנות מעניינות ומרגשות על עצמי ועל הסביבה שלי, השיתופים בקבוצה והתוספות שלך בשיעורי הזום (כל מילה שלך היתה זהב!! ואני לוקחת איתי מלא דברים שאמרת.), ההדגמות שלך להקשבה אמפתית לאחרים בשיעור היה ממש מלמד.</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">אני מרגישה שאני מחוברת יותר מודעת יותר לצרכים ולרגשות שלי, מסתכלת על קונפליקטים מנקודת מבט שונה וגם על שיפוטים, ומגיעה להסכמים עם אנשים תוך בקשה ואפשרות למענה של לא ולקבל את זה. וגם לבקש בעצמי ולהרגיש יותר בנוח עם זה.. פשוט באמת ראייה שלמה יותר מקיפה ויותר עם חמלה על הקשרים שלי עם אנשים ושלי עם עצמי, מחשבה על הפניות שלי שחשובה מאוד אם אני רוצה להיות כפי שאני אוהבת עם קרוביי למשל. באמת מאוד נהנתי ולמדתי, ממש שמחה שהייתי בקורס!! מרגישה שהתכנים האלו כל כך חשובים לחיים..</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">בהחלט נהיה לי מעניין יותר בקשרים עם אנשים שסביבי. יש מה לגלות פתאום. המלצתי למלא מקרוביי על הקורס והנחייה שלך שהיתה מאוד נעימה ומדויקת ונתנה הרבה מענה.</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="carousel__nav">
+                        <button class="carousel__btn" id="carousel-prev" aria-label="הקודם">&#8250;</button>
+                        <div class="carousel__dots" id="carousel-dots"></div>
+                        <button class="carousel__btn" id="carousel-next" aria-label="הבא">&#8249;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             ABOUT INSTRUCTOR SECTION
+             ======================== -->
+        <section id="about" class="section section--about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="section__heading fade-up">על המנחה</h2>
+
+                <div class="about__grid fade-up">
+                    <div class="about__image-wrapper">
+                        <img src="שרון כרמל.png" alt="שרון כרמל - מנחת קבוצות ומלמדת תקשורת מקרבת" loading="lazy">
+                    </div>
+
+                    <div class="about__bio">
+                        <h3>שרון כרמל</h3>
+                        <p class="about__role">מנחת קבוצות, תלמידה של יחסים ושיתוף פעולה</p>
+                        <p>אני מאמינה בכל ליבי באפשרות של עולם שמשרת את החיים וממוקד במציאת פתרונות שעובדים לכולם.</p>
+                        <p>באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
+                        <p>בעשור האחרון מלמדת תקשורת מקרבת, מגשרת, ומנחה ומייעצת במגוון הקשרים: זוגות, משפחות, קהילות, רשויות מקומיות, עסקים, בתי ספר, אוניברסיטאות, תכניות לימוד למטפלים, ועמותות לשינוי חברתי.</p>
+                        <p>לפני 4 שנים ייסדתי את ״רקמה״ - תכנית לימודים שנתית לפיתוח ארגוני וקהילתי בדרך התקשורת המקרבת.</p>
+                        <p>מלווה זוגות וצוותים בקליניקה בפרדס חנה ואון-ליין.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             COURSE DETAILS SECTION
+             ======================== -->
+        <section id="details" class="section section--details" aria-labelledby="details-heading">
+            <div class="container">
+                <h2 id="details-heading" class="section__heading fade-up">פרטי הקורס</h2>
+
+                <div class="details__grid stagger-parent">
+                    <div class="detail-card stagger-child">
+                        <div class="detail-card__header">
+                            <span class="detail-card__icon detail-card__icon--teal" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A7275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </span>
+                            <h3 class="detail-card__title">מתי?</h3>
+                        </div>
+                        <p class="detail-card__info">8 מפגשים<br>יום שני, 09:00-12:30</p>
+                        <p class="detail-card__dates">תאריכים: 2.3, 9.3, 16.3, 23.3, 30.3, 13.4, 20.4, 27.4</p>
+                    </div>
+
+                    <div class="detail-card stagger-child">
+                        <div class="detail-card__header">
+                            <span class="detail-card__icon detail-card__icon--peach" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B4A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </span>
+                            <h3 class="detail-card__title">איפה?</h3>
+                        </div>
+                        <p class="detail-card__info">פרדס חנה<br>בקליניקה שלנו<br>(הכתובת תשלח לנרשמים)</p>
+                    </div>
+
+                    <div class="detail-card detail-card--full stagger-child">
+                        <div class="detail-card__header">
+                            <span class="detail-card__icon detail-card__icon--teal" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A7275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                            <h3 class="detail-card__title">עלות</h3>
+                        </div>
+                        <p class="detail-card__price">₪1,100 - ₪1,700</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             CTA SECTION
+             ======================== -->
+        <section id="cta" class="section section--cta" aria-label="הרשמה">
+            <div class="container">
+                <h2 class="cta__title fade-up">רוצים להצטרף?</h2>
+                <p class="cta__subtitle fade-up">מלאו את טופס ההרשמה ונחזור אליכם בהקדם</p>
+                <div class="cta__button-wrapper fade-up">
+                    <a href="#register" class="btn btn--primary btn--register" aria-label="הרשמה לקורס">
+                        להרשמה לקורס
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================
+         FOOTER
+         ======================== -->
+    <footer class="footer">
+        <p>© 2026 שרון כרמל - תקשורת מקרבת</p>
+    </footer>
+
+    <!-- ========================
+         FLOATING WHATSAPP BUTTON
+         ======================== -->
+    <a href="https://wa.me/972XXXXXXXXX" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="צרו קשר בוואטסאפ">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ========================
+         JAVASCRIPT
+         ======================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            if (prefersReducedMotion.matches) {
+                document.querySelectorAll('.fade-up, .stagger-child').forEach(el => {
+                    el.classList.add('is-visible');
+                });
+            }
+
+            if (!prefersReducedMotion.matches) {
+            // Scroll-triggered fade-up animations
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+            // Staggered children animations
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const children = entry.target.querySelectorAll('.stagger-child');
+                        children.forEach((child, i) => {
+                            child.style.transitionDelay = `${i * 120}ms`;
+                            child.classList.add('is-visible');
+                        });
+                        staggerObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            });
+
+            document.querySelectorAll('.stagger-parent').forEach(el => staggerObserver.observe(el));
+            } // end reduced motion check
+
+            // Lazy-load background images for below-fold sections
+            const bgSections = document.querySelectorAll('.section--quote, .section--cta');
+            if (bgSections.length > 0) {
+                const bgObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('has-bg-loaded');
+                            bgObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '200px 0px' });
+                bgSections.forEach(el => bgObserver.observe(el));
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = link.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Testimonials carousel
+            const track = document.getElementById('testimonials-track');
+            const dotsContainer = document.getElementById('carousel-dots');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+
+            if (track && dotsContainer && prevBtn && nextBtn) {
+                const slides = track.querySelectorAll('.testimonial-card');
+                const totalSlides = slides.length;
+                let currentSlide = 0;
+
+                // Create dots
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel__dot');
+                    if (i === 0) dot.classList.add('is-active');
+                    dot.setAttribute('aria-label', `עדות ${i + 1}`);
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+
+                const dots = dotsContainer.querySelectorAll('.carousel__dot');
+
+                function goToSlide(index) {
+                    currentSlide = index;
+                    // RTL: positive translateX to go forward
+                    track.style.transform = `translateX(${currentSlide * 100}%)`;
+                    dots.forEach((d, i) => d.classList.toggle('is-active', i === currentSlide));
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    goToSlide(currentSlide > 0 ? currentSlide - 1 : totalSlides - 1);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentSlide < totalSlides - 1 ? currentSlide + 1 : 0);
+                });
+
+                // Touch/swipe support
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                track.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                track.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 50) {
+                        // In RTL, swipe left = prev, swipe right = next
+                        if (diff > 0) {
+                            prevBtn.click();
+                        } else {
+                            nextBtn.click();
+                        }
+                    }
+                }, { passive: true });
+            }
+        });
+    </script>
+</body>
+</html>
