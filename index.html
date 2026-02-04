@@ -344,6 +344,16 @@
             animation: hero-fade-in 1s ease-out 0.6s both;
         }
 
+        .hero__logo {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            max-width: 200px;
+            height: auto;
+            z-index: 2;
+            animation: hero-fade-in 1s ease-out both;
+        }
+
         @keyframes hero-fade-in {
             from {
                 opacity: 0;
@@ -1011,6 +1021,12 @@
                 display: none;
             }
 
+            .hero__logo {
+                max-width: 120px;
+                top: var(--space-sm);
+                right: var(--space-sm);
+            }
+
             .whatsapp-fab {
                 width: 52px;
                 height: 52px;
@@ -1323,6 +1339,7 @@
          HERO SECTION
          ======================== -->
     <header id="hero" class="hero">
+        <img src="logo-transparent.png" alt="שרון כרמל - כלים מתקרבים לשותפות וחיבור" class="hero__logo">
         <div class="hero__content">
             <h1 class="hero__title">קורס יסודות בתקשורת מקרבת</h1>
             <p class="hero__subtitle">8 מפגשים, ימי שני בבוקר 09:00-12:30, פרדס חנה</p>
