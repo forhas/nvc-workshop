@@ -1172,26 +1172,16 @@
         }
 
         .emotional__text .emphasis {
-            color: var(--color-teal) !important;
-            position: relative;
-            display: inline-block;
+            color: var(--color-teal-light) !important;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            transition: text-decoration-color 1s ease-out 0.3s;
         }
 
-        .emotional__text .emphasis::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            left: 0;
-            height: 2px;
-            background: var(--color-teal);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 1s ease-out 0.3s;
-        }
-
-        .emotional__text.is-visible .emphasis::after {
-            transform: scaleX(1);
+        .emotional__text.is-visible .emphasis {
+            text-decoration-color: var(--color-teal-light);
         }
 
         /* ============================
