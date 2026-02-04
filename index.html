@@ -63,6 +63,17 @@
         }
 
         /* ============================
+           Handwriting Font
+           ============================ */
+        @font-face {
+            font-family: 'GveretLevin';
+            src: url('gveretlevinalefalefalef-regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ============================
            Reset & Base
            ============================ */
         *, *::before, *::after {
@@ -964,6 +975,15 @@
                 background-color: var(--color-peach-light);
             }
 
+            .section--emotional::before {
+                display: none;
+            }
+
+            .emotional__text p,
+            .invitation__text p {
+                font-size: var(--fs-base);
+            }
+
             .section--content::before {
                 display: none;
             }
@@ -1112,6 +1132,131 @@
         }
 
         /* ============================
+           EMOTIONAL SECTION
+           ============================ */
+        .section--emotional {
+            background: var(--color-beige-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--emotional::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+            background: var(--color-peach-light);
+            opacity: 0.1;
+            top: -80px;
+            right: -80px;
+            pointer-events: none;
+        }
+
+        .emotional__text {
+            max-width: 850px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .emotional__text p {
+            margin-bottom: var(--space-md);
+            font-size: var(--fs-lg);
+            line-height: 2.1;
+            color: var(--color-teal-dark);
+        }
+
+        .emotional__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================
+           INVITATION SECTION
+           ============================ */
+        .section--invitation {
+            background: var(--color-cream);
+        }
+
+        .invitation__text {
+            max-width: 850px;
+            margin-inline: auto;
+        }
+
+        .invitation__text p {
+            margin-bottom: var(--space-md);
+            font-size: var(--fs-lg);
+            line-height: 2;
+        }
+
+        .invitation__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================
+           COURSE INTRO
+           ============================ */
+        .course-intro {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            text-align: center;
+            font-size: var(--fs-lg);
+            line-height: 2;
+            color: var(--color-teal);
+        }
+
+        /* ============================
+           TESTIMONIAL NAME
+           ============================ */
+        .testimonial-card__name {
+            font-family: 'GveretLevin', cursive;
+            font-size: clamp(1.35rem, 1.2rem + 0.8vw, 1.75rem);
+            font-weight: normal;
+            color: var(--color-teal-light);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        /* ============================
+           ABOUT SERVICE HIGHLIGHT
+           ============================ */
+        .about__service {
+            color: var(--color-teal-light);
+            font-weight: 500;
+        }
+
+        /* ============================
+           CTA NOTE
+           ============================ */
+        .cta__note {
+            font-size: var(--fs-sm);
+            color: var(--color-teal-dark);
+            margin-top: var(--space-lg);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================
+           WHATSAPP GROUP SECTION
+           ============================ */
+        .section--whatsapp-group {
+            background: var(--color-beige-light);
+            text-align: center;
+        }
+
+        .whatsapp-group__content {
+            max-width: 700px;
+            margin-inline: auto;
+        }
+
+        .whatsapp-group__description {
+            font-size: var(--fs-lg);
+            line-height: 1.9;
+            margin-bottom: var(--space-xl);
+            color: var(--color-teal);
+        }
+
+        /* ============================
            Reduced Motion
            ============================ */
         @media (prefers-reduced-motion: reduce) {
@@ -1144,7 +1289,7 @@
             <h1 class="hero__title">קורס יסודות בתקשורת מקרבת</h1>
             <p class="hero__subtitle">8 מפגשים, ימי שני בבוקר 09:00-12:30, פרדס חנה</p>
             <p class="hero__dates">מרץ-אפריל 2026</p>
-            <a href="#course-content" class="btn btn--primary hero__cta">מה נלמד בקורס?</a>
+            <a href="#course-content" class="btn btn--primary hero__cta">מה נעשה בקורס?</a>
         </div>
 
         <div class="hero__scroll-hint" aria-hidden="true">
@@ -1154,20 +1299,20 @@
 
     <main id="main-content">
         <!-- ========================
-             WHAT IS NVC SECTION
+             EMOTIONAL SECTION
              ======================== -->
-        <section id="about-nvc" class="section section--nvc" aria-labelledby="nvc-heading">
+        <section id="emotional" class="section section--emotional" aria-label="על קשרים ותקשורת">
             <div class="container">
-                <h2 id="nvc-heading" class="section__heading fade-up">מהי תקשורת מקרבת?</h2>
-
-                <div class="nvc__text fade-up">
-                    <p>תקשורת מקרבת היא שפה, צורת חשיבה, מרחב תרגול תיאורטי-יישומי בו אנו נזכרים איך לבסס מערכות יחסים על אמון, רצון טוב, ושיתוף פעולה.</p>
-                    <p>זוהי גישה המשמשת להעמקת החיבור לעצמנו ולאחרים. ומסייעת בהתמודדות עם קונפליקטים, אי-הבנות וסכסוכים דרך ביטוי אותנטי והקשבה לצרכים של המעורבים.</p>
-                    <p>תוכן הקורס הוא תרגול אבני הבסיס בשפת התקשורת המקרבת. במפגשים ניצור מרחב העמקה וחקירה של התיאוריה והכלים של שפה זו, ונתאמן ביישום באמצעות תרגילים ומרחב לשיתוף.</p>
-                </div>
-
-                <div class="nvc__definition fade-up">
-                    <p>התקשורת המקרבת (באנגלית <span dir="ltr">Non-Violent Communication</span> או בקיצור <span dir="ltr">NVC</span>) פותחה בשנות השישים על ידי מארשל רוזנברג. זוהי שפה המאפשרת לנו להיות בהבנה אמפתית לעצמי ולאחרים. דרך תקשורת שמסייעת להתחבר אל הרגשות והצרכים המתגלים בי ובאחר תוך כדי השיחה, ובכך מסייעת להכיר ולראות אחד את השני באמת ולעומק.</p>
+                <div class="emotional__text fade-up">
+                    <p>עם השנים, כולנו מגבשים מסקנות שקטות לגבי קשרים</p>
+                    <p>אולי אני "מורכבת מדי" או "איתו אי אפשר לדבר" או אולי אכזבה וייאוש הם חלק בלתי נמנע מקשר?</p>
+                    <p>וכמה שאנחנו כמהים לקרבה, ככה אנחנו נזהרים…</p>
+                    <p>אף אחד לא באמת לימד אותנו איך להיות בתוך המתח הזה, איך להישאר קרובים כשזה כואב, מכעיס או פשוט לא מובן.</p>
+                    <p>במקום זה, למדנו לשפוט מי צודק ומי טועה, או להסתובב עם התחושה שמשהו אצלנו לא בסדר.</p>
+                    <p>האמת הטרגית היא, שככל שאחנו מנסים יותר להיות צודקים אנחנו רק מגדילים את המרחק.</p>
+                    <p>אנחנו נשארים עם השאלה המטלטלת: האם זה חייב להיות ככה? האם אני חייב.ת לוותר על חלקים מעצמי כדי להיות בקשר?</p>
+                    <p>בשבילי זה היה כל כך מעייף ומכביד לחיות בתוך הלופ הזה</p>
+                    <p>להיעלב, לנסות לנחש מה הצד השני חושב, לפעול מתוך פחד לפגוע או להיפגע, ולגלות שוב ושוב שהכוונות הטובות שלי לא מצילות אותי מקונפליקטים.</p>
                 </div>
             </div>
         </section>
@@ -1186,22 +1331,60 @@
         </section>
 
         <!-- ========================
+             INVITATION SECTION
+             ======================== -->
+        <section id="invitation" class="section section--invitation" aria-label="הזמנה לקורס">
+            <div class="container">
+                <div class="invitation__text fade-up">
+                    <p>הקורס הזה הוא הזמנה להניח בצד את השאלה "מה נכון לעשות", ולהתחיל לשאול בפשטות: מה באמת קורה לנו כרגע?</p>
+                    <p>בשבילי תקשורת מקרבת היא לא שיטה, או פתרון קסם לחיים נטולי קושי. היא מצפן לאיכות חיים אחרת, בתוך עצמנו ועם אחרים.</p>
+                    <p>אני מזמינה אותך למסע משותף של 8 מפגשים</p>
+                    <p>הקורס הוא מרחב לתרגול של תנועות חדשות בתוך החיים עצמם.</p>
+                    <p>מקום להאט את הקצב האוטומטי. להחליף את השיפוטיות והידיעה המוקדמת בסקרנות עמוקה. ולגלות שמתחת לכל התנהגות, גם המכאיבה ביותר, פועם לב אנושי שמנסה לענות על צורך.</p>
+                    <p>זה מסע של אבולוציה פנימית. של הסכמה אמיצה לדבר יותר אמת, באכפתיות. לפגוש את הפער בין הכוונות שלנו להשפעות על אחרים, להסכים ש"חוזים ישנים" יתפרקו, כדי שמשהו חדש, כנה ומחובר יותר יוכל להיוולד.</p>
+                    <p>הזמנה להניע את חוסר האונים, האשמה והפחד אל עבר חוויה של אחריות אישית ובחירה, ולבסס את היחסים שלנו על נתינה וקבלה מרצון</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             WHAT IS NVC SECTION
+             ======================== -->
+        <section id="about-nvc" class="section section--nvc" aria-labelledby="nvc-heading">
+            <div class="container">
+                <h2 id="nvc-heading" class="section__heading fade-up">מהי תקשורת מקרבת?</h2>
+
+                <div class="nvc__text fade-up">
+                    <p>תקשורת מקרבת היא הרבה מעבר לשפה או שיטה – היא שינוי תודעתי שמזמין אותנו לראות את העולם אחרת. במקום הכאב של העיסוק באשמה והאשמה, במקום התקיעות שבשאלה "איך לגרום לאנשים להשתנות", תקשורת מקרבת היא נתיב שמאפשר להמיס את חומות הכעס והנפרדות ולהיזכר באנושיות המשותפת של כולנו.</p>
+                    <p>אנחנו מתחילים לראות כל התנהגות, גם המכאיבה ביותר, כניסיון לענות על צורך. אנחנו מתחילים לדבר את מה שחשוב לנו באמת, להקשיב למה שלא שמענו לפני.</p>
+                    <p>ואז, איפה שראינו קודם רק אופציות למאבק או ויתור - מתגלות אפשרויות יצירתיות וחדשות.</p>
+                </div>
+
+                <div class="nvc__definition fade-up">
+                    <p>התקשורת הלא-אלימה (באנגלית <span dir="ltr">Non-Violent Communication</span> או בקיצור <span dir="ltr">NVC</span>) פותחה בשנות השישים על ידי ד"ר מארשל רוזנברג. מרשאל שאב השראה רבה מתנועות שינוי חברתי שדגלו באי-אלימות: גנדי בהודו, מרטין לותר קינג ג'וניור ותנועת זכויות האזרח בארה"ב. והושפע מקרל רוג'רס - אבי הפסיכולוגיה ההומניסטית, ומג'ידו קרישנמורטי - פילוסוף הודי ומורה רוחני.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
              COURSE CONTENT SECTION
              ======================== -->
         <section id="course-content" class="section section--content" aria-labelledby="content-heading">
             <div class="container">
-                <h2 id="content-heading" class="section__heading fade-up">מה נלמד בקורס?</h2>
+                <h2 id="content-heading" class="section__heading fade-up">מה נעשה בקורס?</h2>
+
+                <p class="course-intro fade-up">תוכן הקורס הוא תרגול אבני הבסיס בשפת התקשורת המקרבת. במפגשים ניצור מרחב העמקה וחקירה של התיאוריה והכלים של שפה זו, ונתאמן ביישום באמצעות תרגילים ומרחב לשיתוף</p>
 
                 <ul class="course-list stagger-parent">
-                    <li class="course-list__item stagger-child">נכיר את המודל של תקשורת מקרבת ואת הנחות המוצא שלו</li>
-                    <li class="course-list__item stagger-child">נבחן את ההבדל בין תצפית לפרשנות ונכיר חסמי תקשורת נפוצים</li>
-                    <li class="course-list__item stagger-child">נגלה מה הדפוסים המשותפים לכולנו, המנועים מאיתנו לקיים תקשורת מקרבת בחיינו</li>
-                    <li class="course-list__item stagger-child">נתבונן בקונפליקטים בתור פוטנציאל להעמיק חיבור</li>
-                    <li class="course-list__item stagger-child">נזהה רגשות וצרכים ונלמד לבטא אותם בצורה ברורה</li>
-                    <li class="course-list__item stagger-child">נראה איך מבקשים בצורה שמגדילה את הסיכוי שמה שחשוב לנו יענה</li>
-                    <li class="course-list__item stagger-child">נלמד כיצד לשמוע ״לא״, לומר ״לא״ ולהמשיך את הדיאלוג אחריהם</li>
-                    <li class="course-list__item stagger-child">ניווכח בכוחה של האמפתיה לשנות מצבים</li>
-                    <li class="course-list__item stagger-child">נכיר דרכים לחפש פתרונות שעובדים לכולם</li>
+                    <li class="course-list__item stagger-child">נאט את הקצב האוטומטי: נחקור מה מסייע לנו לעבור מתגובתיות לפניות</li>
+                    <li class="course-list__item stagger-child">נזהה את הדפוסים שחוסמים אותנו מקשר, ואיך להכניס לשם סדקים מרפאים</li>
+                    <li class="course-list__item stagger-child">נלמד להבדיל בין מה שבאמת קרה ("תצפית") לבין המשמעות שהענקנו לזה. ולמה ההבחנה בין שניהם כל כך חשובה בשיחה.</li>
+                    <li class="course-list__item stagger-child">נעבור לדבר שפה של פגיעות ואחריות, במקום שפה של אשמה וביקורת.</li>
+                    <li class="course-list__item stagger-child">ניווכח בכוחה הטרנספורמטיבי של הקשבה אמפתית, ואיך הקשבה כזו יכולה להביא רכות לעלבונות שלנו ושל אחרים.</li>
+                    <li class="course-list__item stagger-child">נתבונן בקונפליקטים שלנו ונגלה איך דווקא שם טמונה הזדמנות להעמיק את החיבור והכנות.</li>
+                    <li class="course-list__item stagger-child">נתרגל איך לבקש ולהזמין שיתוף פעולה בבהירות, מבלי לדרוש או לצפות שיבינו אותנו לבד.</li>
+                    <li class="course-list__item stagger-child">נתאמן להישאר סקרנים ופתוחים גם מול "לא", ולשמור על דיאלוג חי גם כשיש אי-הסכמה.</li>
+                    <li class="course-list__item stagger-child">נזוז שוב ושוב מפרדיגמת ה"או-או", כדי לגלות דרכים לפתרונות יצירתיים שיש בהם ערבות לצרכים של כולם.</li>
                 </ul>
             </div>
         </section>
@@ -1216,23 +1399,43 @@
                 <div class="testimonials__carousel fade-up">
                     <div class="testimonials__track" id="testimonials-track">
                         <blockquote class="testimonial-card">
-                            <p class="testimonial-card__text">הקורס סייע לי מאוד בהבנה של עצמי מול אחרים מול סיטואציות קשות שבהן אין לי שליטה לא על האחר ולא על הרגשות שלי. היום אני יותר מבין מה אני צריך ולא שופט את עצמי על הצרכים שלי זה הדבר הכי חשוב שלקחתי. קבלה עצמית. הנושא של לראות את הצרכים של האחר ממש בתודעה שלי ואם הוא לא נמצא בשלוף, אני אנסה לנתח ולזהות. זה משמעותי מאוד זה מסיר ממני המון מתח ומשפר את התקשורת שלי עם התלמידים וגם עם מבוגרים שאני מטפל בהם.</p>
+                            <p class="testimonial-card__text">החוויה הראשונית היא מה שקרה בקבוצה, האווירה האינטימית והמאפשרת. קרו שם דברים שלא הייתי מדמיין את עצמי אומר או עושה מבחינת עד כמה הם חשופים ונוגעים. חוויה יוצאת דופן שאיפשרה לי באמת התבוננות עמוקה וכנה פנימה, כמה תובנות חדשות לגבי התקשורת שלי עם עצמי ועם הסביבה, וארגז כלים להמשך</p>
+                            <p class="testimonial-card__name">נטע</p>
                         </blockquote>
 
                         <blockquote class="testimonial-card">
-                            <p class="testimonial-card__text">הקורס הוא חוויית גילוי. הרגשתי כמו נערה. לקחתי איתי את כל התכנים והתחלתי בגדול לתרגל אותם מעשית עם הצוות שלי, הסובבים אותי, חבר מהקורס. המון המון נכנס ליומן שלי היומי שאני רושמת בו תובנות. המפגש איתך סייע לי לחלום את החיים קצת שונים ונתן לי יותר כלים להביא את זה.</p>
+                            <p class="testimonial-card__text">הנושא של לראות את הצרכים של האחר ממש בתודעה שלי ואם הוא לא נמצא בשלוף, אני אני אנסה לנתח ולזהות. זה משמעותי מאוד. זה מסיר ממני המון מתח ומשפר את התקשורת שלי עם התלמידים וגם עם מבוגרים שאני מטפל בהם</p>
+                            <p class="testimonial-card__name">נתי</p>
                         </blockquote>
 
                         <blockquote class="testimonial-card">
-                            <p class="testimonial-card__text">ואי, למדתי ממש מהכל!! מהטקסטים המדויקים והמרתקים ששלחת, מהתרגילים שהגעתי איתם לתובנות מעניינות ומרגשות על עצמי ועל הסביבה שלי, השיתופים בקבוצה והתוספות שלך בשיעורי הזום (כל מילה שלך היתה זהב!! ואני לוקחת איתי מלא דברים שאמרת.), ההדגמות שלך להקשבה אמפתית לאחרים בשיעור היה ממש מלמד.</p>
+                            <p class="testimonial-card__text">תודה על הנדיבות לחלוק בידע שלך, לדעת סודות שגילית בדרך שלך. תודה על המבט שלך והעיניים הטובות. זה נתן לי ביטחון ונינוחות. למדתי כל כך הרבה איכויות מהצורה שבה את עושה דברים. תודה שעשית מקום לעצמך, לצרכים שלך כאדם, זה מודלינג בשבילי</p>
+                            <p class="testimonial-card__name">חן</p>
                         </blockquote>
 
                         <blockquote class="testimonial-card">
-                            <p class="testimonial-card__text">אני מרגישה שאני מחוברת יותר מודעת יותר לצרכים ולרגשות שלי, מסתכלת על קונפליקטים מנקודת מבט שונה וגם על שיפוטים, ומגיעה להסכמים עם אנשים תוך בקשה ואפשרות למענה של לא ולקבל את זה. וגם לבקש בעצמי ולהרגיש יותר בנוח עם זה.. פשוט באמת ראייה שלמה יותר מקיפה ויותר עם חמלה על הקשרים שלי עם אנשים ושלי עם עצמי, מחשבה על הפניות שלי שחשובה מאוד אם אני רוצה להיות כפי שאני אוהבת עם קרוביי למשל. באמת מאוד נהנתי ולמדתי, ממש שמחה שהייתי בקורס!! מרגישה שהתכנים האלו כל כך חשובים לחיים..</p>
+                            <p class="testimonial-card__text">הקורס לימד אותי דרך הסתכלות חדשה על אינטראקציות עם אחרים ובעיקר על השיח הפנימי שאני מנהלת עם עצמי. במקום לעסוק בתוכן של המחשבות שאני חושבת על עצמי ועל אחרים, הוא לימד אותי לחפש את הצרכים שמסתתרים מתחת למחשבות, ולהיות בחיבור לעצמי ולאחרים</p>
+                            <p class="testimonial-card__name">שקד</p>
                         </blockquote>
 
                         <blockquote class="testimonial-card">
-                            <p class="testimonial-card__text">בהחלט נהיה לי מעניין יותר בקשרים עם אנשים שסביבי. יש מה לגלות פתאום. המלצתי למלא מקרוביי על הקורס והנחייה שלך שהיתה מאוד נעימה ומדויקת ונתנה הרבה מענה.</p>
+                            <p class="testimonial-card__text">הקורס נתן לי כלים אמיתיים שמאפשרים לי לפגוש את ה"אני האמיתי" של אנשים אחרים ולא רק את הקליפות החיצוניות. הקורס סייע לי מאוד בהבנה של עצמי מול אחרים מול סיטואציות קשות שבהן אין לי שליטה לא על האחר ולא על הרגשות שלי. היום אני יותר מבין מה אני צריך, ולא שופט את עצמי על הצרכים שלי. זה הדבר הכי חשוב שלקחתי - קבלה עצמית.</p>
+                            <p class="testimonial-card__name">דניאל</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">ההנחיה של שרון היתה מעולה. היא הייתה מאד חדה, ידעה להרגיש את המשתתפים ולחוש מה עומד מאחורי במילים המדוברות. המפגש בקבוצה היה כיף גדול. התרגולים של הכלים בתקשורת מקרבת היו מאד מהנים ומעניינים ועשו חשק לחקור עוד ועוד</p>
+                            <p class="testimonial-card__name">איתי</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">הקורס השפיע על צורת ההתבוננות שלי על קונפליקטים ועל שיחות קשות. בעיקר יצאתי בתחושה שזו שפה נפלאה, ושהייתי רוצה להפיץ את הבשורה לאנשים סביבי כדי שגם הם יבינו את המקור לשיח שכולנו מורגלים בו ויבינו שאפשר גם אחרת</p>
+                            <p class="testimonial-card__name">לימור</p>
+                        </blockquote>
+
+                        <blockquote class="testimonial-card">
+                            <p class="testimonial-card__text">עצם ההתייחסות לשדה של התקשורת בין אנשים היה לי חדש, ופתח מבחינתי עוד עולם שלם להתייחסות ולעיצוב. הרגשתי גם שההפרדה בין צורך לאסטרטגיה, וההתייחסות לצרכים כדבר רחב שאין בו משהו רע, כדבר שנותן מקום. זה נתן לי דרך אחרת להבין את עצמי, להתייחס לעצמי</p>
+                            <p class="testimonial-card__name">עמרי</p>
                         </blockquote>
                     </div>
 
@@ -1258,13 +1461,12 @@
                     </div>
 
                     <div class="about__bio">
-                        <h3>שרון כרמל</h3>
-                        <p class="about__role">מנחת קבוצות, תלמידה של יחסים ושיתוף פעולה</p>
-                        <p>אני מאמינה בכל ליבי באפשרות של עולם שמשרת את החיים וממוקד במציאת פתרונות שעובדים לכולם.</p>
-                        <p>באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
-                        <p>בעשור האחרון מלמדת תקשורת מקרבת, מגשרת, ומנחה ומייעצת במגוון הקשרים: זוגות, משפחות, קהילות, רשויות מקומיות, עסקים, בתי ספר, אוניברסיטאות, תכניות לימוד למטפלים, ועמותות לשינוי חברתי.</p>
-                        <p>לפני 4 שנים ייסדתי את ״רקמה״ - תכנית לימודים שנתית לפיתוח ארגוני וקהילתי בדרך התקשורת המקרבת.</p>
-                        <p>מלווה זוגות וצוותים בקליניקה בפרדס חנה ואון-ליין.</p>
+                        <h3>אני שרון כרמל</h3>
+                        <p class="about__role">מנחת קבוצות, תלמידה של יחסים ושיתוף פעולה.</p>
+                        <p>בעשור האחרון מלמדת תקשורת מקרבת, מגשרת ומנחה ומייעצת במגוון הקשרים: זוגות, משפחות, קהילות, רשויות מקומיות, עסקים ועמותות, בתי ספר, אוניברסיטאות, ותכניות לימוד חוץ-אקדמיות.</p>
+                        <p>לפני 4 שנים ייסדתי את "רקמה" - תכנית לימודים שנתית לפיתוח ארגוני וקהילתי בדרך התקשורת המקרבת.</p>
+                        <p>אני מאמינה בכל ליבי באפשרות של עולם שמשרת את החיים וממוקד במציאת פתרונות שעובדים לכולם. באמצעות ההנחיה שלי אני יוצרת מפגשים שמנגישים את הדרכים להתחבר, להתמודד עם אתגרים, ולחזק את ההבנה ההדדית והיחד.</p>
+                        <p class="about__service">מלווה אנשים בקונפליקט או אתגר (זוגות, משפחות, צוותי עבודה) בקליניקה בפרדס חנה ואון-ליין</p>
                     </div>
                 </div>
             </div>
@@ -1296,7 +1498,7 @@
                             </span>
                             <h3 class="detail-card__title">איפה?</h3>
                         </div>
-                        <p class="detail-card__info">פרדס חנה<br>בקליניקה שלנו<br>(הכתובת תשלח לנרשמים)</p>
+                        <p class="detail-card__info">במרחב שלי בכרכור<br>(כתובת תשלח לנרשמים)</p>
                     </div>
 
                     <div class="detail-card detail-card--full stagger-child">
@@ -1306,7 +1508,7 @@
                             </span>
                             <h3 class="detail-card__title">עלות</h3>
                         </div>
-                        <p class="detail-card__price">₪1,100 - ₪1,700</p>
+                        <p class="detail-card__price">₪1,700 - ₪1,100</p>
                     </div>
                 </div>
             </div>
@@ -1318,11 +1520,31 @@
         <section id="cta" class="section section--cta" aria-label="הרשמה">
             <div class="container">
                 <h2 class="cta__title fade-up">רוצים להצטרף?</h2>
-                <p class="cta__subtitle fade-up">מלאו את טופס ההרשמה ונחזור אליכם בהקדם</p>
+                <p class="cta__subtitle fade-up">מלאו את טופס ההרשמה ואחזור אליכם בהקדם</p>
                 <div class="cta__button-wrapper fade-up">
                     <a href="#register" class="btn btn--primary btn--register" aria-label="הרשמה לקורס">
                         להרשמה לקורס
                     </a>
+                </div>
+                <p class="cta__note fade-up">שמירת מקום תתבצע לאחר העברת דמי הרשמה בסך 250 ש"ח.</p>
+            </div>
+        </section>
+        <!-- ========================
+             WHATSAPP GROUP SECTION
+             ======================== -->
+        <section id="whatsapp-group" class="section section--whatsapp-group" aria-labelledby="whatsapp-group-heading">
+            <div class="container">
+                <div class="whatsapp-group__content">
+                    <h2 id="whatsapp-group-heading" class="section__heading fade-up">רוצה להישאר מעודכן/ת?</h2>
+
+                    <p class="whatsapp-group__description fade-up">הצטרפו לקבוצת הוואטסאפ השקטה שלי לעידכונים על הקורסים הבאים ועל אירועים נוספים שמתקיימים בביתי</p>
+
+                    <div class="fade-up">
+                        <a href="https://chat.whatsapp.com/LogfM6b0GpY7MKd7dTT0Nw" class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="הצטרפות לקבוצת וואטסאפ">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            לחצו כאן להצטרפות לקבוצת וואטסאפ שקטה
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
