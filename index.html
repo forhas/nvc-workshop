@@ -985,11 +985,24 @@
                 background-color: var(--color-peach-light);
             }
 
-            .section--emotional::before {
-                display: none;
+            .section--emotional {
+                min-height: auto;
+                padding-block: var(--space-lg);
             }
 
-            .emotional__text p,
+            .emotional__box {
+                max-width: none;
+                margin: 0 !important;
+                padding: var(--space-md);
+                font-size: var(--fs-base);
+            }
+
+            .emotional__box--right,
+            .emotional__box--center,
+            .emotional__box--left {
+                align-self: stretch;
+            }
+
             .invitation__text p {
                 font-size: var(--fs-base);
             }
@@ -1151,53 +1164,68 @@
            EMOTIONAL SECTION
            ============================ */
         .section--emotional {
-            background: var(--color-beige-light);
             position: relative;
+            min-height: 100vh;
+            background-color: var(--color-beige-light);
             overflow: hidden;
+            padding-block: var(--space-2xl);
         }
 
+        /* Blurred background image layer */
         .section--emotional::before {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
-            background: var(--color-peach-light);
-            opacity: 0.1;
-            top: -80px;
-            right: -80px;
+            inset: 0;
+            background: url('sh10.jpg') center center / cover no-repeat;
+            filter: blur(2px);
+            z-index: 0;
+        }
+
+        /* Soft warm overlay on top of blurred image */
+        .section--emotional::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(245, 230, 211, 0.15);
+            z-index: 1;
             pointer-events: none;
         }
 
-        .emotional__text {
-            max-width: 850px;
-            margin-inline: auto;
-            text-align: right;
+        .emotional__boxes {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            padding: var(--space-xl) 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .emotional__box {
+            background: rgba(248, 230, 218, 0.92);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg) var(--space-xl);
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
             font-family: 'GveretLevin', cursive;
-        }
-
-        .emotional__text p {
-            margin-bottom: var(--space-md);
-            font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
-            line-height: 2.2;
+            font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+            line-height: 1.9;
             color: var(--color-teal-dark);
+            text-align: right;
         }
 
-        .emotional__text p:last-child {
-            margin-bottom: 0;
+        /* Zigzag positioning: Top-Right → Center → Bottom-Left (RTL corrected) */
+        .emotional__box--right {
+            align-self: flex-start;
+            margin-left: var(--space-xl);
         }
 
-        .emotional__text .emphasis {
-            color: var(--color-teal-light) !important;
-            text-decoration: underline;
-            text-decoration-color: transparent;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 4px;
-            transition: text-decoration-color 1s ease-out 0.3s;
+        .emotional__box--center {
+            align-self: center;
         }
 
-        .emotional__text.is-visible .emphasis {
-            text-decoration-color: var(--color-teal-light);
+        .emotional__box--left {
+            align-self: flex-end;
+            margin-right: var(--space-xl);
         }
 
         /* ============================
@@ -1358,17 +1386,16 @@
              ======================== -->
         <section id="emotional" class="section section--emotional" aria-label="על קשרים ותקשורת">
             <div class="container">
-                <div class="emotional__text fade-up">
-                    <p>עם השנים, מתגבשות מסקנות שקטות לגבי קשרים</p>
-                    <p>אולי אני "מורכבת מדי"</p>
-                    <p>או "איתו אי אפשר לדבר"</p>
-                    <p>או אולי אכזבה וייאוש הם חלק בלתי נמנע מקשר?</p>
-                    <p>וכמה שאנחנו כמהים לקרבה, ככה אנחנו מסבירים יותר, דורשים יותר, או שותקים ונזהרים לא לפגוע…</p>
-                    <p><span class="emphasis">אף אחד לא באמת לימד אותנו איך באמת להיות בתוך המתח הזה, איך להשאר קרובים כשזה כואב, מכעיס או פשוט לא מובן.</span></p>
-                    <p>במקום זה, למדנו לשפוט מי צודק ומי טועה, או להסתובב עם התחושה שמשהו אצלנו לא בסדר.</p>
-                    <p><span class="emphasis">האמת הטראגית היא, שככל שאנחנו מנסים להיות יותר צודקים - אנחנו רק מגדילים את המרחק.</span></p>
-                    <p>אנחנו נשארות עם השאלה המטלטלת: האם זה חייב להיות ככה? האם אני חייב.ת לוותר על חלקים מעצמי כדי להיות בקשר?</p>
-                    <p>בשבילי זה היה כל כך מעייף ומכביד לחיות בתוך הלופ הזה להיעלב, לנסות לנחש מה הצד השני חושב, לפעול מתוך פחד לפגוע או להיפגע, ולגלות שוב ושוב שהכוונות הטובות שלי לא מצילות אותי מקונפליקטים.</p>
+                <div class="emotional__boxes">
+                    <div class="emotional__box emotional__box--right fade-up">
+                        עם השנים, מתגבשות מסקנות שקטות לגבי קשרים – אולי אני "מורכבת מדי", או "איתו אי אפשר לדבר", או אולי אכזבה וייאוש הם חלק בלתי נמנע מקשר?
+                    </div>
+                    <div class="emotional__box emotional__box--center fade-up">
+                        וכמה שאנחנו כמהים לקרבה, ככה אנחנו מסבירים יותר, דורשים יותר, או שותקים ונזהרים לא לפגוע… אף אחד לא באמת לימד אותנו איך להיות בתוך המתח הזה, איך להשאר קרובים כשזה כואב, מכעיס או פשוט לא מובן.
+                    </div>
+                    <div class="emotional__box emotional__box--left fade-up">
+                        במקום זה, למדנו לשפוט מי צודק ומי טועה, או להסתובב עם התחושה שמשהו אצלנו לא בסדר. האמת הטראגית היא, שככל שאנחנו מנסים להיות יותר צודקים – אנחנו רק מגדילים את המרחק.
+                    </div>
                 </div>
             </div>
         </section>
