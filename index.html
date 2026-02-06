@@ -815,6 +815,13 @@
             color: var(--color-teal-dark);
         }
 
+        .detail-card__note {
+            font-size: var(--fs-sm);
+            color: var(--color-teal);
+            margin-top: var(--space-sm);
+            line-height: 1.7;
+        }
+
         /* ============================
            CTA SECTION
            ============================ */
@@ -997,11 +1004,6 @@
                 font-size: var(--fs-base);
             }
 
-            .emotional__box--right,
-            .emotional__box--center,
-            .emotional__box--left {
-                align-self: stretch;
-            }
 
             .invitation__text p {
                 font-size: var(--fs-base);
@@ -1166,45 +1168,25 @@
         .section--emotional {
             position: relative;
             min-height: 100vh;
-            background-color: var(--color-beige-light);
+            background: linear-gradient(180deg, var(--color-beige-light) 0%, var(--color-peach-light) 50%, var(--color-beige) 100%);
             overflow: hidden;
             padding-block: var(--space-2xl);
         }
 
-        /* Blurred background image layer */
-        .section--emotional::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('nvc-ai.png') center center / cover no-repeat;
-            filter: blur(2px);
-            z-index: 0;
-        }
-
-        /* Soft warm overlay on top of blurred image */
-        .section--emotional::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(245, 230, 211, 0.15);
-            z-index: 1;
-            pointer-events: none;
-        }
 
         .emotional__boxes {
             display: flex;
             flex-direction: column;
             gap: var(--space-lg);
             padding: var(--space-xl) 0;
-            position: relative;
-            z-index: 2;
         }
 
         .emotional__box {
-            background: rgba(248, 230, 218, 0.92);
+            background: rgba(255, 255, 255, 0.92);
             border-radius: var(--radius-lg);
             padding: var(--space-lg) var(--space-xl);
-            max-width: 500px;
+            max-width: 800px;
+            margin-inline: auto;
             box-shadow: var(--shadow-lg);
             font-family: 'GveretLevin', cursive;
             font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
@@ -1213,20 +1195,6 @@
             text-align: right;
         }
 
-        /* Zigzag positioning: Top-Right → Center → Bottom-Left (RTL corrected) */
-        .emotional__box--right {
-            align-self: flex-start;
-            margin-left: var(--space-xl);
-        }
-
-        .emotional__box--center {
-            align-self: center;
-        }
-
-        .emotional__box--left {
-            align-self: flex-end;
-            margin-right: var(--space-xl);
-        }
 
         /* ============================
            INVITATION SECTION
@@ -1387,14 +1355,14 @@
         <section id="emotional" class="section section--emotional" aria-label="על קשרים ותקשורת">
             <div class="container">
                 <div class="emotional__boxes">
-                    <div class="emotional__box emotional__box--right fade-up">
+                    <div class="emotional__box fade-up">
                         עם השנים, מתגבשות מסקנות שקטות לגבי קשרים – אולי אני "מורכבת מדי", או "איתו אי אפשר לדבר", או אולי אכזבה וייאוש הם חלק בלתי נמנע מקשר?
+                        וכמה שאנחנו כמהים לקרבה -ככה אנחנו מסבירים יותר, דורשים יותר, או שותקים ונזהרים לא לפגוע…
                     </div>
-                    <div class="emotional__box emotional__box--center fade-up">
-                        וכמה שאנחנו כמהים לקרבה, ככה אנחנו מסבירים יותר, דורשים יותר, או שותקים ונזהרים לא לפגוע… אף אחד לא באמת לימד אותנו איך להיות בתוך המתח הזה, איך להשאר קרובים כשזה כואב, מכעיס או פשוט לא מובן.
-                    </div>
-                    <div class="emotional__box emotional__box--left fade-up">
-                        במקום זה, למדנו לשפוט מי צודק ומי טועה, או להסתובב עם התחושה שמשהו אצלנו לא בסדר. האמת הטראגית היא, שככל שאנחנו מנסים להיות יותר צודקים – אנחנו רק מגדילים את המרחק.
+                    <div class="emotional__box fade-up">
+                        אף אחד לא באמת לימד אותנו איך להיות בתוך המתח הזה, איך להשאר קרובים כשזה כואב, מכעיס או פשוט לא מובן.
+                        במקום זה, למדנו לשפוט מי צודק ומי טועה, או להסתובב עם התחושה שמשהו אצלנו לא בסדר.
+                        האמת הטראגית היא, שככל שאנחנו מנסים להיות יותר צודקים – אנחנו רק מגדילים את המרחק.
                     </div>
                 </div>
             </div>
@@ -1592,6 +1560,7 @@
                             <h3 class="detail-card__title">עלות</h3>
                         </div>
                         <p class="detail-card__price">₪1,700 - ₪1,100</p>
+                        <p class="detail-card__note">עלות הקורס היא 1,700 ש"ח. טווח המחיר לבחירתכם.ן נועד לאפשר הנחה במידת הצורך, מתוך רצוני להקטין את הסיכוי שמצב כלכלי יהווה מחסום להשתתפות.</p>
                     </div>
                 </div>
             </div>
